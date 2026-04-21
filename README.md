@@ -2,31 +2,7 @@
 
 OSSEC Active Response ile Cloudflare üzerinden zararlı IP adreslerini otomatik olarak engelleyen bash scripti.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Cloudflare API: v4](https://img.shields.io/badge/Cloudflare%20API-v4%20(Güncel)-orange)](https://developers.cloudflare.com/api/)
-[![OSSEC Compatible](https://img.shields.io/badge/OSSEC-Uyumlu-green)](https://www.ossec.net/)
-
 ---
-
-## v1 → v2 Ne Değişti?
-
-| Özellik | v1 (Eski) | v2 (Yeni) |
-|---|---|---|
-| **Kimlik Doğrulama** | X-Auth-Email + X-Auth-Key (Global API Key) | Bearer Token (API Token) ✅ |
-| **IP Access Rules API** | `/user/firewall/access_rules/rules` | `/zones/{zone_id}/firewall/access_rules/rules` ✅ |
-| **WAF Custom Rules / IP List** | Yok | Destekleniyor (`CF_MODE=list`) ✅ |
-| **IPv6 Desteği** | Yok | CIDR normalizasyonu ile tam destek ✅ |
-| **Hata Yönetimi** | Yok | Retry mekanizması (3 deneme), HTTP kodu kontrolü ✅ |
-| **Loglama** | Minimal | Structured log (timestamp + severity + mesaj) ✅ |
-| **API Endpoint (Firewall Rules)** | `/user/firewall/access_rules/rules` (çalışıyor) | Zone-level endpoint (daha güvenli) ✅ |
-| **jq Bağımlılığı** | Zorunlu | Opsiyonel (fallback ile çalışır) ✅ |
-| **Yapılandırma Doğrulama** | Yok | Token/Zone ID boş bırakılınca açık hata ✅ |
-
-> **Not:** Cloudflare **Firewall Rules API** (`/zones/{zone}/firewall/rules`) **2025-06-15** itibarıyla tamamen kaldırılmıştır.
-> Bu script, hâlâ desteklenen **IP Access Rules API** ve önerilen **WAF Custom Rules IP List** yöntemlerini kullanmaktadır.
-
----
-
 ## Gereksinimler
 
 - OSSEC HIDS (veya Wazuh)
@@ -190,13 +166,12 @@ tail -f /var/ossec/logs/active-responses.log
 
 ## Lisans
 
-MIT License — Hamza Şamlıoğlu / Privia Security
+Free 
 
 ---
 
 ## Yazar
 
 **Hamza Şamlıoğlu**  
-Managing Partner, [Privia Security](https://priviasecurity.com)  
 GitHub: [@teakolik](https://github.com/teakolik)  
 LinkedIn: [linkedin.com/in/teakolik](https://www.linkedin.com/in/teakolik/)
