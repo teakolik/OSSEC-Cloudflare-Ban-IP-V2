@@ -5,34 +5,18 @@
 # Versiyon    : 2.0.0
 # Güncellenme : 2026-04-22
 # =============================================================================
-#
-# DEĞİŞİKLİK KAYDI (v1 → v2):
-#   - Eski X-Auth-Email/X-Auth-Key → Yeni Bearer Token kimlik doğrulama
-#   - Firewall Rules API (deprecated 2025-06-15) → IP Access Rules API (desteklenen)
-#   - WAF Custom Rules IP List desteği eklendi (CF_MODE=list ile aktif edilir)
-#   - IPv4 ve IPv6 CIDR desteği
-#   - Gelişmiş hata yönetimi ve JSON yanıt doğrulama
-#   - Structured loglama (timestamp + severity + mesaj)
-#   - API başarısızlığında retry mekanizması (3 deneme)
-#   - Zone-level ve Account-level kural desteği
-#
-# =============================================================================
 # KURULUM
 # =============================================================================
-#
 # 1) Bu dosyayı kopyalayın:
 #       cp cloudflare_ban.sh /var/ossec/active-response/bin/cloudflare-ban.sh
 #       chmod +x /var/ossec/active-response/bin/cloudflare-ban.sh
 #       chown root:ossec /var/ossec/active-response/bin/cloudflare-ban.sh
-#
 # 2) Cloudflare API Token oluşturun:
 #       Cloudflare Dashboard → My Profile → API Tokens → Create Token
 #       İzinler: Zone > Firewall Services > Edit
 #                Zone > Zone > Read
 #       (IP List modu için: Account > Account Filter Lists > Edit)
-#
 # 3) /var/ossec/etc/ossec.conf dosyanıza ekleyin:
-#
 #   <command>
 #     <name>cloudflare-ban</name>
 #     <executable>cloudflare-ban.sh</executable>
@@ -47,10 +31,10 @@
 #     <timeout>43200</timeout>
 #   </active-response>
 #
-# 4) Aşağıdaki "ZORUNLU YAPILANDIRMA" bölümünü düzenleyin.
+# 4) Aşağıdaki "YAPILANDIRMA" bölümünü düzenleyin.
 #
 # =============================================================================
-# ZORUNLU YAPILANDIRMA
+# API YAPILANDIRMA
 # =============================================================================
 
 # Cloudflare API Token (Bearer)
